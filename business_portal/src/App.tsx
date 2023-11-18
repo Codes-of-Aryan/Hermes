@@ -11,7 +11,9 @@ const App: React.FC = () => {
       <Header />
       <div className="main-app-window">
         <VerticalMenu />
-        <NotificationList />
+        <div className="notification-list">
+          <NotificationList />
+        </div>
       </div>
     </div>
   );
