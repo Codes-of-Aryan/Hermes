@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./NotificationList.css";
+import Modal from "./Modal";
 
 interface Notification {
   title: string;
@@ -9,17 +10,9 @@ interface Notification {
 }
 
 const NotificationList: React.FC = () => {
-  const [showPopup, setShowPopup] = useState(false);
-  const [popupContent, setPopupContent] = useState("");
-
-  const handleViewDescription = (description: string) => {
-    setPopupContent(description);
-    setShowPopup(true);
-  };
-
-  const closePopup = () => {
-    setShowPopup(false);
-  };
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedNotification, setSelectedNotification] =
+    useState<Notification | null>(null);
 
   const [notifications, setNotifications] = useState<Notification[]>([
     {
@@ -52,39 +45,45 @@ const NotificationList: React.FC = () => {
     },
   ]);
 
-  // Function to remove notification from the list
   const removeNotification = (id: string) => {
     setNotifications(
       notifications.filter((notification) => notification.id !== id)
     );
-    // Send a REST delete request to the backend
     fetch("/api/profile", {
       method: "DELETE",
       body: JSON.stringify({ id: id, status: "rejected" }),
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data); // Handle the server response
+        console.log(data);
       })
       .catch((error) => {
-        console.error(error); // Handle the error
+        console.error(error);
       });
   };
 
-  // Function to accept the request
   const acceptRequest = (id: string) => {
-    // Send a REST put request to the backend
     fetch("/api/profile", {
       method: "PUT",
       body: JSON.stringify({ id: id, status: "accepted" }),
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data); // Handle the server response
+        console.log(data);
       })
       .catch((error) => {
-        console.error(error); // Handle the error
+        console.error(error);
       });
+  };
+
+  const openModal = (notification: Notification) => {
+    setSelectedNotification(notification);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedNotification(null);
+    setModalOpen(false);
   };
 
   return (
@@ -106,13 +105,17 @@ const NotificationList: React.FC = () => {
                     <button onClick={() => removeNotification(notification.id)}>
                       Remove
                     </button>
-                    <button
-                      onClick={() =>
-                        handleViewDescription(notification.description)
-                      }
-                    >
+                    <button onClick={() => openModal(notification)}>
                       View Description
                     </button>
+                    {modalOpen &&
+                      selectedNotification?.id === notification.id && (
+                        <Modal
+                          isOpen={true}
+                          onClose={closeModal}
+                          bodyText={notification.description}
+                        />
+                      )}
                     <button onClick={() => acceptRequest(notification.id)}>
                       Accept
                     </button>
@@ -123,16 +126,6 @@ const NotificationList: React.FC = () => {
           </tbody>
         </table>
       </div>
-      {showPopup && (
-        <div className="popup-content">
-          <div>
-            <button className="close-btn" onClick={closePopup}>
-              Close
-            </button>
-            <p>{popupContent}</p>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
