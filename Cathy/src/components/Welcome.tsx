@@ -7,7 +7,7 @@ export const Welcome: React.FC = () => (
       video below for how Cathy works.
     </p>
     <p>
-      <a className="underline" href="https://github.com/ascorbic/daneel#readme">
+      <a className="underline" href="">
         Cathy Video Resources 📽️
       </a>
     </p>
