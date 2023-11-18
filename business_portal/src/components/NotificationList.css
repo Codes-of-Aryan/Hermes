@@ -1,0 +1,11 @@
+.notification-list {
+  display: flex;
+  width: 50%;
+  flex-direction: row;
+  margin: 0;
+  padding: 10px;
+}
+
+.inline {
+  display: inline;
+}
