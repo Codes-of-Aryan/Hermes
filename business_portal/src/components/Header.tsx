@@ -1,10 +1,7 @@
-// header componenent for the business portal with the title
-// and the logout button
-
 import React from "react";
 import "./Header.css";
 
-const Header = () => {
+const Header: React.FC = () => {
   return (
     <div className="header">
       <div className="header-title">

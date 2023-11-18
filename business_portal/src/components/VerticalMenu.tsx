@@ -1,6 +1,6 @@
 import React from "react";
 
-const VerticalMenu = () => {
+const VerticalMenu: React.FC = () => {
   return (
     <div style={{ display: "flex" }}>
       <div style={{ backgroundColor: "lightgray", width: "200px" }}>

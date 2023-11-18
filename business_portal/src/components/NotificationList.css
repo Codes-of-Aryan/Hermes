@@ -1,11 +1,21 @@
 .notification-list {
   display: flex;
-  width: 50%;
+  width: 100%;
   flex-direction: row;
   margin: 0;
   padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
 }
 
 .inline {
   display: inline;
+}
+
+.button-container {
+  margin-top: 10px;
+}
+
+.button-container button {
+  margin-right: 10px;
 }
