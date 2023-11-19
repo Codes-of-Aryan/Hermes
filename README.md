@@ -1,51 +1,55 @@
-# Hermes - Seamless Intermodal Travel Experience
+markdown
+Copy
+# Project Cathy
 
-## Overview
+Project Cathy is an event and customer request handler service powered by Generative A.I. It extends Cathay Pacific's premium customer service to intermodal travel and optimizes customer touchpoints beyond the airport. This repository contains the Django backend and two frontend applications: the customer frontend for the Cathay Pacific app and the business portal for third-party companies.
 
-Hermes is a digital solution developed by FTE during the Cathay Hackathon 2023 to offer a unique travel experience beyond traditional flight and hotel stays by leveraging digital means to provide value-added services and enhancements. The aim of Hermes is to enable seamless intermodal travel within the Greater Bay Area (GBA), allowing customers to book and enjoy a personalized and hassle-free travel experience.
+## Table of Contents
 
-## Problem Statement
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-Cathay recognizes that personalized services often do not extend beyond their own customer experience ecosystem. Third-party providers hinder the ability to offer premium services within the intermodal travel services. Therefore, the pain point addressed by Hermes is to bridge this gap and provide a seamless intermodal travel experience through Cathay within the GBA.
+## Installation
 
-## Features and Functionality
+To install and configure the Django project and frontends, follow these steps:
 
-### Trigger-Response Contact System
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/project-cathy.git
+Set up the Django project:
+bash
+Copy
+cd project-cathy/backend
+# Set up virtual environment (optional but recommended)
+python3 -m venv env
+source env/bin/activate
+# Install dependencies
+pip install -r requirements.txt
+# Run migrations
+python manage.py migrate
+# Start the Django development server
+python manage.py runserver
+```
 
-Hermes incorporates a trigger-response contact system that allows users to feed personalized information into the system. This information can include preferences, special requests, real-time updates (e.g., delays), and any other relevant details. Triggers are generated based on this information, both from existing customer relationship management (CRM) data and real-time requests. These triggers enable touchpoints throughout the travel journey to prepare and provide a unique personalized travel experience.
+Set up the customer frontend:
+bash
+Copy
+cd ../customer-frontend
+# Install dependencies
+npm install
+# Start the development server
+npm start
+```
 
-### Information Generative Service
-
-Hermes acts as a post-booking service, generating messages and understandable information to be sent to different touchpoints. It ensures that suppliers and service providers are well-informed about the customer's preferences, needs, and any special requirements. By creating portals for partners, Hermes encourages collaboration and enhances the overall intermodal travel experience. This service aims to reduce logistics, cater to Cathay's preferences, and provide a seamless travel experience for customers.
-
-### UI/UX Fluidity
-
-The user interface and user experience (UI/UX) of Hermes are designed to be fluid, ensuring ease of use and a seamless interaction with the platform. The UI/UX team focuses on providing an intuitive and user-friendly interface that enables customers to effortlessly navigate through the various features and functionalities of Hermes.
-
-### API Integration
-
-Hermes includes an API that allows integration with various third-party services and systems. This integration enables the platform to access relevant data and information from external sources, enhancing the overall travel experience and providing comprehensive solutions to customers.
-
-## Benefits
-
-### For Customers
-
-- Seamless intermodal travel experience within the Greater Bay Area.
-- Personalized and value-added services based on customer preferences and needs.
-- Reduced friction and language barriers during intermodal travel.
-- Access to comprehensive information and assistance throughout the journey.
-- Hassle-free coordination between different touchpoints.
-
-### For Suppliers and Service Providers
-
-- Streamlined communication and collaboration with Cathay and other partners.
-- Increased visibility and access to customer preferences and special requests.
-- Enhanced customer satisfaction through personalized service delivery.
-- Opportunities to expand their offerings and reach a wider customer base.
-
-### For Cathay
-
-- Increased customer loyalty and satisfaction through a unique and seamless travel experience.
-- Differentiation from competitors by offering value-added services beyond traditional flight and hotel stays.
-- Stronger partnerships with suppliers and service providers within the Greater Bay Area.
-- Potential for revenue growth by tapping into the intermodal travel market
+Set up the business portal frontend:
+bash
+Copy
+cd ../business-portal-frontend
+# Install dependencies
+npm install
+# Start the development server
+npm start
+```
+Now you can access the customer frontend at http://localhost:3000 and the business portal frontend at http://localhost:4000.
